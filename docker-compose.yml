@@ -10,12 +10,12 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
       - VERSION=docker
-      - PLEX_CLAIM= CLAIM_TOKEN
+      - PLEX_CLAIM= YOUR_CLAIM_TOKEN
     ports:
       - 32400:32400
     volumes:
-      - /Chemin/vers/dossier/films:/data
-      - /Chemin/vers/dossier/plex:/config
+      - /path/to/library/medias:/data
+      - /path/to/library/plex:/config
 
   radarr:
     image: linuxserver/radarr
@@ -24,9 +24,9 @@ services:
     ports:
       - 7878:7878
     volumes:
-      - /Chemin/vers/dossier/radarr:/config
-      - /Chemin/vers/dossier/films:/movies
-      - /Chemin/vers/dossier/downloads:/downloads
+      - /path/to/library/radarr:/config
+      - /path/to/library/medias/films:/movies
+      - /path/to/library/downloads:/downloads
 
   sonarr:
     image: linuxserver/sonarr
@@ -35,9 +35,9 @@ services:
     ports:
       - 8989:8989
     volumes:
-      - /Chemin/vers/dossier/sonarr:/config
-      - /Chemin/vers/dossier/series:/tv
-      - /Chemin/vers/dossier/downloads:/downloads
+      - /path/to/library/sonarr:/config
+      - /path/to/library/medias/series:/tv
+      - /path/to/library/downloads:/downloads
 
   qbittorrent:
     image: linuxserver/qbittorrent
@@ -48,8 +48,8 @@ services:
       - 6881:6881
       - 6881:6881/udp
     volumes:
-      - /Chemin/vers/dossier/qbittorrent:/config
-      - /Chemin/vers/dossier/downloads:/downloads
+      - /path/to/library/qbittorrent:/config
+      - /path/to/library/downloads:/downloads
 
   jackett:
     image: linuxserver/jackett
@@ -58,8 +58,8 @@ services:
     ports:
       - 9117:9117
     volumes:
-      - /Chemin/vers/dossier/jackett:/config
-      - /Chemin/vers/dossier/downloads:/downloads
+      - /path/to/library/jackett:/config
+      - /path/to/library/downloads:/downloads
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr
@@ -75,4 +75,4 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - /Chemin/vers/dossier/overseerr:/config
+      - /path/to/library/overseerr:/config
