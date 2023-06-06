@@ -14,8 +14,8 @@ services:
     ports:
       - 32400:32400
     volumes:
-      - /path/to/library/medias:/data
-      - /path/to/library/plex:/config
+      - /path/to/library/medias:/mnt/user/data
+      - /path/to/library/plex:/mnt/user/config/plex
 
   radarr:
     image: linuxserver/radarr
@@ -24,9 +24,9 @@ services:
     ports:
       - 7878:7878
     volumes:
-      - /path/to/library/radarr:/config
-      - /path/to/library/medias/films:/movies
-      - /path/to/library/downloads:/downloads
+      - /path/to/library/radarr:/mnt/user/config/radarr
+      - /path/to/library/medias/films:/mnt/user/data/movies
+      - /path/to/library/downloads:/mnt/user/data/downloads
 
   sonarr:
     image: linuxserver/sonarr
@@ -35,9 +35,9 @@ services:
     ports:
       - 8989:8989
     volumes:
-      - /path/to/library/sonarr:/config
-      - /path/to/library/medias/series:/tv
-      - /path/to/library/downloads:/downloads
+      - /path/to/library/sonarr:/mnt/user/config/sonarr
+      - /path/to/library/medias/series:/mnt/user/data/tv
+      - /path/to/library/downloads:/mnt/user/data/downloads
 
   qbittorrent:
     image: linuxserver/qbittorrent
@@ -48,8 +48,8 @@ services:
       - 6881:6881
       - 6881:6881/udp
     volumes:
-      - /path/to/library/qbittorrent:/config
-      - /path/to/library/downloads:/downloads
+      - /path/to/library/qbittorrent:/mnt/user/config/qbittorrent
+      - /path/to/library/downloads:/mnt/user/data/downloads
 
   jackett:
     image: linuxserver/jackett
@@ -58,8 +58,8 @@ services:
     ports:
       - 9117:9117
     volumes:
-      - /path/to/library/jackett:/config
-      - /path/to/library/downloads:/downloads
+      - /path/to/library/jackett:/mnt/user/config/jackett
+      - /path/to/library/downloads:/mnt/user/data/downloads
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr
@@ -75,4 +75,4 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - /path/to/library/overseerr:/config
+      - /path/to/library/overseerr:/mnt/user/config/overseerr
